@@ -1,10 +1,19 @@
 <div>
-    <h2> Add Category </h2>
+  <h2> Add Category </h2>
+  <div>
+    <%= form_with model: @category do |f| %>
     <div>
-        <%= form_with model: @category do |f| %>
-            <%= f.text_field :name %><br><br>
-            <%= f.text_field :amount %><br><br>
-            <%= f.submit "Add Category" %>
-        <% end %>
-    </div>
+      <div class="field">
+        <%= f.label :Icon %>
+        <%= f.file_field :icon%>
+      </div><br>
+
+      <div class="field">
+        <%= f.label :Name %>
+        <%= f.text_field :name%>
+      </div><br>
+    
+      <%= f.submit "Add Category" %>
+    <% end %>
+  </div>
 </div>

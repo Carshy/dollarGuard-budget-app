@@ -16,6 +16,9 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:success] = 'Category Added Successfully'
+      redirect_to categories_path
+    else
+      flash.now[:error] = 'Error: Category could not be added'
       redirect_to new_category_path
     end
   end
@@ -23,6 +26,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :amount, :icon)
+    params.require(:category).permit(:name, :icon)
   end
 end

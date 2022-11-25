@@ -1,0 +1,23 @@
+<section class="transfer-section">
+  <h1>New Transaction</h1>
+  <%= form_with model: @transfer, url: transfers_path, method: :post do |form| %>
+    <div class="transfer-select">
+        <%= form.label :category_id %>
+        <%= form.collection_select :category_id, current_user.categories, :id, :name, prompt: true %>
+    </div>
+
+    <div class="transfer-name">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div class="transfer-amount">
+        <%= form.label :amount %>
+        <%= form.number_field :amount %>
+    </div>
+
+    <div class='self-center'>
+        <%= form.submit "Save" %>
+    </div>
+  <% end %>
+</section>

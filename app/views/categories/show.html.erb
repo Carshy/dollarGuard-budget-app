@@ -1,2 +1,25 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<section>
+  <h1 class="transfer-title">Transaction List</h1>
+  <div>
+    <h2><%= @category.name %></h2>
+    <div>
+      <p class="transfer-amount">Total Amount: $<%= @category.transfers.sum(:amount) %></p>
+      <%= button_to 'Delete', @category, method: :delete %>
+    </div>
+  <div>
+  <% if @transfers.exists? %>
+    <div class="transfer-lists">
+      <%= @transfers.each do |transfer| %>
+        <div>
+          <p><%= transfer.name %></p>
+          <p>$<%= transfer.amount %></p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h3>Click the Add Transfer button to Create a Transaction</h3>
+  <% end %>
+  <div class="add-transfer-item">
+    <%= link_to 'Add Transaction', new_transfer_path(@category.id) %>
+  </div>
+</section>

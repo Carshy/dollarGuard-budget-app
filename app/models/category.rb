@@ -3,5 +3,5 @@ class Category < ApplicationRecord
   validates :icon, presence: true
   belongs_to :user
   has_one_attached :icon
-  has_many :transfers, dependent: :destroy
+  has_many :transfers, foreign_key: 'category_id', dependent: :destroy
 end

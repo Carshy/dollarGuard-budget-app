@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
   validates :name, presence: true
-  has_many :categories
-  has_many :transfers
+  has_many :categories, class_name: 'Category', dependent: :destroy
+  has_many :transfers, dependent: :destroy
 end

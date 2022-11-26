@@ -75,3 +75,5 @@ end
 
 # Adding tools
 gem 'devise'
+
+gem "tailwindcss-rails", "~> 2.0"

@@ -10,9 +10,6 @@ class TransfersController < ApplicationController
     # category = current_user.categories.find(params[:category_id])
     if transfer.save
       flash[:notice] = 'Category added successfully'
-      puts('--------------------------')
-      puts(params)
-      puts('--------------------------')
       redirect_to categories_path
       # redirect_to category_path(category.id)
     else

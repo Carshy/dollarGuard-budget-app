@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # get 'transfers/new'
-  # get 'transfers/create'
   
   devise_for :users, sign_out_via: [:get, :post]
   

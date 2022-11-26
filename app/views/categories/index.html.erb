@@ -1,21 +1,29 @@
-<h1>Categories Page</h1>
 
-<div class="categories-container">
+<div class="d-flex justify-content-between top text-light p-2 bg-primary top-0">
+  <a href="#" class="text-light"><i class="bi bi-list h1"></i></a>
+  <h1>Categories Page</h1>
+  <a href="#" class="text-light"><i class="bi bi-search h1"></i></a>
+</div>
+
+<div>
   <% if @categories.empty? %>  
     <div class="alert alert-info">
       <strong>No Categories Found</strong>
     </div>
   <% else %>
     <%= @categories.each do |category| %>
-      <div class="category-items">
+      <div class='d-flex border mb-1 p-4 gap-5'>
         <div style="width:90px; height:auto">
           <%= image_tag(category.icon, style:'width:100%') %>
         </div>
-        <p class="category-name"><%= link_to category.name, category_path(category) %></p>
+        <div>
+          <p class="category-name"><%= link_to category.name, category_path(category), class: 'text-decoration-none' %></p>
+          <p><%= category.created_at.strftime("%d %h %Y")  %></p>
+        </div>
       </div>
     <% end %>
   <% end %>
 </div>
-<div class="add-category">
-  <%= link_to 'Add Category', new_category_path(@category) %>
+<div class="text-light footer d-flex justify-content-center p-3">
+  <%= link_to 'Add Category', new_category_path(@category), class: 'btn border border-light p-2' %>
 </div>

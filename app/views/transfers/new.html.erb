@@ -1,23 +1,29 @@
 <section class="transfer-section">
-  <h1>New Transaction</h1>
   <%= form_with model: @transfer, url: transfers_path, method: :post do |form| %>
-    <div class="transfer-select">
-        <%= form.label :category_id %>
-        <%= form.collection_select :category_id, current_user.categories, :id, :name, prompt: true %>
+    <div class="d-flex flex-column top p-2 bg-primary mb-5">
+      <%= link_to root_path, class: 'text-light h1' do %>
+          <i class="bi bi-arrow-left"></i>
+      <% end %>
+      <h3 class="text-light align-items-center">New Transaction</h3>
     </div>
+    <div class="p-4">
+      <div class="transfer-select">
+          <%= form.label :category_id %>
+          <%= form.collection_select :category_id, current_user.categories, :id, :name, prompt: true, 
+          class: "p-1 border rounded dropdown-toggle" %>
+      </div>
 
-    <div class="transfer-name">
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
+      <div class="mt-4">
+          <%= form.text_field :name, class: 'form-control', placeholder: 'Name', required: true, class: "form-control"  %>
+      </div>
 
-    <div class="transfer-amount">
-        <%= form.label :amount %>
-        <%= form.number_field :amount %>
-    </div>
+      <div class="mt-4">
+          <%= form.number_field :amount, class: 'form-control', placeholder: 'Amount', required: true %>
+      </div>
 
-    <div class='self-center'>
-        <%= form.submit "Save" %>
+      <div class='self-center mt-4'>
+          <%= form.submit "Save" %>
+      </div>
     </div>
   <% end %>
 </section>

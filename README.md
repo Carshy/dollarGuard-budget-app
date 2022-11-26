@@ -76,7 +76,8 @@
 
 > Add a link to your deployed project.
 
-- [Live Demo Link]()
+- [Live Demo Link coming soon]()
+- [Video presentation of the app](https://www.loom.com/share/34407aabbc434657b87a329e67b22c52)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

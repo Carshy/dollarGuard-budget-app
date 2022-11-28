@@ -9,11 +9,11 @@ RSpec.describe 'User request', type: :request do
     end
 
     it 'Home page render template' do
-      expect(response).to render_template('users/index')
+      expect(response).to render_template('homes/index')
     end
 
     it 'Home page have content' do
-      expect(response.body).to include('Categories list')
+      expect(response.body).to include('Welcome to Dollar-Guard Budget App')
     end
   end
 end

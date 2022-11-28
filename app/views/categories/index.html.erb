@@ -1,0 +1,45 @@
+<div class="pos-f-t bg-primary">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <div>
+    <nav class="navbar navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <i class="bi bi-search text-light me-5"></i>
+    </nav>
+    <div class="d-flex justify-content-between p-3">
+      <p class="text-light">Welcome <%= current_user.name %></p>
+      <%= link_to "Logout", destroy_user_session_path, class: "btn btn-info text-light" %>
+    </div>
+  </div>
+</div>
+
+<div>
+  <% if @categories.empty? %>  
+    <div class="alert alert-info">
+      <strong>No Categories Found</strong>
+    </div>
+  <% else %>
+    <%= @categories.each do |category| %>
+      <div class='d-flex border mb-1 p-4 gap-5'>
+        <div style="width:90px; height:auto">
+          <%= image_tag(category.icon, style:'width:100%') %>
+        </div>
+        <div>
+          <p class="category-name">
+          <%= link_to category.name, category_path(category), class: 'text-decoration-none' %>
+          </p>
+          <p><%= category.created_at.strftime("%d %h %Y")  %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="text-light footer d-flex justify-content-center p-3">
+  <%= link_to 'Add Category', new_category_path(@category), class: 'btn border border-light p-2 align-self-center w-100' %>
+</div>

@@ -1,0 +1,20 @@
+<div class="w-75 m-auto d-flex flex-column gap-5">
+  <h2> Add Category </h2>
+  <div>
+    <%= form_with model: @category do |f| %>
+    <div class="d-flex flex-column">
+      <div class="field">
+        <%= f.label :Icon %>
+        <%= f.file_field :icon %>
+      </div><br><br>
+
+      <div class="field">
+        <%= f.label :Name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div><br>
+    
+      <%= f.submit "Save Category" %>
+    <% end %>
+  </div>
+  <%= link_to "Back Home", root_path, class: "btn btn-info text-light mt-4" %>
+</div>

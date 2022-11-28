@@ -1,0 +1,48 @@
+<div class="pos-f-t bg-primary">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <div>
+    <nav class="navbar navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <p class="text-light fs-2 fw-bold">Transaction List</p>
+      <i class="bi bi-search text-light me-5"></i>
+    </nav>
+  </div>
+</div>
+
+<section>
+  <div class='flex flex-col gap-5'>
+    <div class='d-flex items-center flex-col gap-2'>
+      <h2><%= @category.name %></h2>
+      <div class='flex justify-between gap-4'>
+        <p class='font-bold'>Total Amount: $<%= @category.transfers.sum(:amount) %></p>
+        <%= button_to 'Delete', @category, method: :delete, :class => "font-bold rounded-md p-1 bg-red-500 text-slate-50" %>
+      </div>
+    </div>
+    <% if @transfers.exists? %>
+      <div>
+        <%= @transfers.each do |transfer| %>
+          <div class="d-flex flex-row justify-content-between border mb-1 p-4 gap-5">
+            <div>
+              <p><%= transfer.name %></p>
+              <p><%= transfer.created_at.strftime("%d %h %Y")  %></p>
+            </div>
+            <p><strong>$<%= transfer.amount %></strong></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <h3>Click the Add Transfer button to Create a Transaction</h3>
+    <% end %>
+  </div>
+  <div class="text-light footer d-flex justify-content-center p-3">
+    <%= link_to 'Add Transaction', new_transfer_path(@category.id), class: 'btn border border-light p-2 align-self-center w-100' %>
+  </div>
+  <%= link_to "Back Home", root_path, class: "btn btn-info text-light w-100" %>
+</section>
